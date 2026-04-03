@@ -54,9 +54,9 @@ const CSS = `
 
   ::-webkit-scrollbar { width: 2px; }
   ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: #2d0a4e; border-radius: 999px; }
-  textarea { scrollbar-width: thin; scrollbar-color: #2d0a4e transparent; }
-  textarea::placeholder { color: #4a2070; }
+  ::-webkit-scrollbar-thumb { background: #8860d0; border-radius: 999px; }
+  textarea { scrollbar-width: thin; scrollbar-color: #8860d0 transparent; }
+  textarea::placeholder { color: #a080ff; }
 
   /* ── Keyframes ── */
   @keyframes petal-fall {
@@ -102,6 +102,18 @@ const CSS = `
   }
   .about-btn { transition: all .15s ease }
   .about-btn:hover { background: rgba(192,32,255,.15) !important; border-color: #c020ff !important; color: #e080ff !important }
+  
+  /* Mobile-specific fixes */
+  @media (max-width: 768px) {
+    textarea { font-size: 16px; }
+    input-box { padding: 12px; }
+  }
+  
+  @supports (padding: max(0px)) {
+    @media (max-height: 500px) {
+      html, body { height: 100vh; height: 100dvh; }
+    }
+  }
 
   .modal-card { animation: modal-up .3s cubic-bezier(.34,1.4,.64,1) both }
   .banner     { animation: banner-in .45s cubic-bezier(.34,1.3,.64,1) both }
@@ -271,12 +283,12 @@ function InAppBanner({ onDismiss }) {
         </div>
         <button onClick={onDismiss} style={{
           background:"none",border:"none",cursor:"pointer",
-          color:"#6030aa",fontSize:"18px",lineHeight:1,flexShrink:0,padding:"2px",
+          color:"#a070ff",fontSize:"18px",lineHeight:1,flexShrink:0,padding:"2px",
         }}>✕</button>
       </div>
 
       <div style={{
-        background:"#0d001a",border:"1px solid #3d0a60",
+        background:"#0d001a",border:"1px solid #6b3fa0",
         borderRadius:"10px",padding:"10px 12px",marginBottom:"10px",
       }}>
         <p style={{color:"#c4a0e8",fontSize:"12px",lineHeight:1.8}}>
@@ -294,7 +306,7 @@ function InAppBanner({ onDismiss }) {
           letterSpacing:".3px",
         }}>🌐 Try Opening in Browser</button>
         <button onClick={onDismiss} style={{
-          background:"#0d001a",border:"1px solid #3d0a60",
+          background:"#0d001a",border:"1px solid #6b3fa0",
           borderRadius:"10px",padding:"10px 14px",
           color:"#9b70c8",fontSize:"12px",cursor:"pointer",whiteSpace:"nowrap",
         }}>Continue anyway</button>
@@ -313,7 +325,7 @@ function AboutModal({ onClose }) {
     }}>
       <div className="modal-card" onClick={e=>e.stopPropagation()} style={{
         background:"linear-gradient(160deg,#0d0020 0%,#07000f 100%)",
-        border:"1px solid #3d0a6044",
+        border:"1px solid #6b3fa088",
         borderRadius:"22px",padding:"30px 24px",
         maxWidth:"370px",width:"100%",
         boxShadow:"0 0 80px #c020ff18,0 0 0 1px #c020ff0a",
@@ -322,10 +334,10 @@ function AboutModal({ onClose }) {
         <button onClick={onClose} style={{
           position:"absolute",top:"14px",right:"14px",
           background:"none",border:"none",cursor:"pointer",
-          color:"#3d0a60",fontSize:"20px",lineHeight:1,transition:"color .2s",
+          color:"#a070ff",fontSize:"20px",lineHeight:1,transition:"color .2s",
         }}
           onMouseEnter={e=>e.target.style.color="#c020ff"}
-          onMouseLeave={e=>e.target.style.color="#3d0a60"}
+          onMouseLeave={e=>e.target.style.color="#a070ff"}
         >✕</button>
 
         <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:"16px",marginBottom:"20px"}}>
@@ -345,16 +357,16 @@ function AboutModal({ onClose }) {
         <p style={{color:"#c8aee8",fontSize:"13px",lineHeight:"1.8",textAlign:"center",marginBottom:"18px"}}>
           Meet <span style={{color:"#ff2244",fontWeight:600}}>Amy</span> — a goth AI who finds your questions mildly exhausting
           and answers them anyway. She doesn't care. She's just thorough. 😒<br/>
-          <span style={{color:"#7030aa",fontSize:"11px"}}>Deal with it. 🖤</span>
+          <span style={{color:"#b080ff",fontSize:"11px"}}>Deal with it. 🖤</span>
         </p>
 
-        <div style={{height:"1px",background:"linear-gradient(90deg,transparent,#3d0a6044,transparent)",marginBottom:"18px"}}/>
+        <div style={{height:"1px",background:"linear-gradient(90deg,transparent,#6b3fa088,transparent)",marginBottom:"18px"}}/>
 
         <div style={{
-          background:"#08001688",border:"1px solid #2d0a4e",
+          background:"#08001688",border:"1px solid #6b3fa0",
           borderRadius:"14px",padding:"18px",textAlign:"center",
         }}>
-          <p style={{color:"#7030aa",fontSize:"9px",letterSpacing:"3px",textTransform:"uppercase",marginBottom:"10px"}}>
+          <p style={{color:"#a070ff",fontSize:"9px",letterSpacing:"3px",textTransform:"uppercase",marginBottom:"10px"}}>
             ✦ built from scratch by ✦
           </p>
           <p style={{
@@ -362,20 +374,20 @@ function AboutModal({ onClose }) {
             background:"linear-gradient(90deg,#ff2244,#c020ff,#ff6b9d)",
             WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",
           }}>AFFAN</p>
-          <p style={{color:"#6030aa",fontSize:"11px",marginTop:"5px",letterSpacing:"1px"}}>
+          <p style={{color:"#a070ff",fontSize:"11px",marginTop:"5px",letterSpacing:"1px"}}>
             Solo Developer · Designer · Stays up too late
           </p>
           <div style={{display:"flex",gap:"6px",justifyContent:"center",marginTop:"12px",flexWrap:"wrap"}}>
             {["Solo Dev","React","Dark AI","v1.1"].map(t=>(
               <span key={t} style={{
-                background:"#150030",border:"1px solid #3d0a6055",
+                background:"#150030",border:"1px solid #6b3fa077",
                 borderRadius:"999px",padding:"4px 11px",
                 fontSize:"10px",color:"#a060d8",letterSpacing:".4px",
               }}>{t}</span>
             ))}
           </div>
         </div>
-        <p style={{textAlign:"center",marginTop:"16px",color:"#2d0a4e",fontSize:"10px",letterSpacing:"1px"}}>
+        <p style={{textAlign:"center",marginTop:"16px",color:"#a070ff",fontSize:"10px",letterSpacing:"1px"}}>
           Tap outside to close.
         </p>
       </div>
@@ -455,7 +467,7 @@ function Splash({ onDone }) {
           fontFamily:"Noto Sans JP",color:"#c020ff44",
           fontSize:"20px",letterSpacing:"6px",marginBottom:"8px",
         }}>アミー</p>
-        <p style={{color:"#6030aa",fontSize:"10px",letterSpacing:"4px",textTransform:"uppercase",fontWeight:300}}>
+        <p style={{color:"#a070ff",fontSize:"10px",letterSpacing:"4px",textTransform:"uppercase",fontWeight:300}}>
           Goth AI · by Affan
         </p>
       </div>
@@ -643,10 +655,10 @@ export default function App() {
       {banner && !splash && <InAppBanner onDismiss={()=>setBanner(false)}/>}
 
       <div style={{
-        width:"100vw",height:"100vh",
+        width:"100%",height:"100%",
         display:"flex",flexDirection:"column",
         background:"radial-gradient(ellipse at 18% 12%,#130025 0%,#03000d 50%,#060010 100%)",
-        position:"relative",overflow:"hidden",
+        position:"fixed",top:0,left:0,right:0,bottom:0,overflow:"hidden",
       }}>
         {petals.map(p=><Petal key={p.id} {...p}/>)}
 
@@ -686,7 +698,7 @@ export default function App() {
                 background:"#c020ff",boxShadow:"0 0 8px #c020ff",
                 animation:"glow-pulse 2s ease-in-out infinite",
               }}/>
-              <span style={{color:"#7030aa",fontSize:"10px",letterSpacing:".6px"}}>
+              <span style={{color:"#b050ff",fontSize:"10px",letterSpacing:".6px"}}>
                 Goth AI · Online · Mildly irritated 😒
               </span>
             </div>
@@ -695,13 +707,13 @@ export default function App() {
           <div style={{marginLeft:"auto",display:"flex",alignItems:"center",gap:"10px"}}>
             <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"1px"}}>
               <span style={{fontFamily:"Noto Sans JP",color:"#c020ff33",fontSize:"14px"}}>アミー</span>
-              <span style={{fontFamily:"Orbitron",fontSize:"8px",letterSpacing:"2px",color:"#4a1070"}}>by Affan</span>
+              <span style={{fontFamily:"Orbitron",fontSize:"8px",letterSpacing:"2px",color:"#a060e0"}}>by Affan</span>
             </div>
             <button className="about-btn" onClick={()=>setAbout(true)} style={{
               background:"#0d001a",
               border:"1px solid #2d0a4e",
               borderRadius:"9px",padding:"6px 12px",cursor:"pointer",
-              color:"#7030aa",fontSize:"10px",letterSpacing:".8px",
+              color:"#b080ff",fontSize:"10px",letterSpacing:".8px",
               fontFamily:"Orbitron,sans-serif",whiteSpace:"nowrap",
             }}>About</button>
           </div>
@@ -730,7 +742,7 @@ export default function App() {
           <div className="input-box" style={{
             display:"flex",alignItems:"flex-end",gap:"8px",
             background:"#08001a",
-            border:"1px solid #2d0a4e",
+            border:"1px solid #6b3fa0",
             borderRadius:"20px",padding:"8px 8px 8px 14px",
           }}>
             <textarea
@@ -762,7 +774,7 @@ export default function App() {
               </svg>
             </button>
           </div>
-          <p style={{textAlign:"center",marginTop:"6px",color:"#2d0a4e",fontSize:"9px",letterSpacing:".7px"}}>
+          <p style={{textAlign:"center",marginTop:"6px",color:"#8860d0",fontSize:"9px",letterSpacing:".7px"}}>
             Enter to send · Shift+Enter for new line
           </p>
         </div>
