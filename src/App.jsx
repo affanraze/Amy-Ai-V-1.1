@@ -46,6 +46,11 @@ const CSS = `
     color: #ece6ff;
     -webkit-font-smoothing: antialiased;
   }
+  
+  /* Mobile keyboard fix */
+  @supports (padding: max(0px)) {
+    body { padding-bottom: max(0px, env(safe-area-inset-bottom)); }
+  }
 
   ::-webkit-scrollbar { width: 2px; }
   ::-webkit-scrollbar-track { background: transparent; }
@@ -720,6 +725,7 @@ export default function App() {
           background:"rgba(3,0,13,.98)",
           backdropFilter:"blur(20px)",
           borderTop:"1px solid #c020ff0d",
+          flexShrink:0,
         }}>
           <div className="input-box" style={{
             display:"flex",alignItems:"flex-end",gap:"8px",
